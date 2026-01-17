@@ -24,3 +24,22 @@ The MVP is successful if:
 - Two images can be scored
 - The explanation feels reasonable to a human
 - The result is repeatable and consistent
+
+## Non-Goals (Explicitly Not Trying to Solve)
+Project Venus is NOT trying to:
+- Tell users what is “fashionable” or “trendy”
+- Replace human judgment or personal taste
+- Perfectly classify all clothing styles
+- Handle edge cases like costumes or high fashion
+- Be correct 100% of the time
+
+The goal is consistency and explainability, not perfection.
+
+## MVP Definition of Done
+The MVP is considered complete when:
+- Two clothing images can be analyzed together
+- A numeric compatibility score is produced
+- The score includes a human-readable explanation
+- The same inputs reliably produce similar outputs
+
+At that point, the experiment has succeeded.
