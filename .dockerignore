@@ -1,0 +1,9 @@
+.git
+.venv*
+experiments/
+tests/
+docs/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.ipynb_checkpoints/
