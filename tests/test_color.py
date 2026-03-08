@@ -29,17 +29,56 @@ class TestMainColor:
 
 
 class TestColorName:
-    def test_pure_red(self):
-        assert color_name(np.array([220, 50, 50])) == "red"
+    # Core colors
+    def test_red(self):
+        assert color_name(np.array([200, 40, 40])) == "red"
 
     def test_navy(self):
-        assert color_name(np.array([25, 40, 110])) == "navy"
+        assert color_name(np.array([20, 35, 105])) == "navy"
 
     def test_black(self):
         assert color_name(np.array([10, 10, 10])) == "black"
 
     def test_white(self):
         assert color_name(np.array([250, 250, 250])) == "white"
+
+    def test_gray(self):
+        assert color_name(np.array([145, 145, 145])) == "gray"
+
+    # Expanded palette — clothing-relevant colors
+    def test_burgundy_distinct_from_maroon(self):
+        # Burgundy is more purple-red; maroon is darker brown-red
+        burgundy = color_name(np.array([125, 20, 40]))
+        maroon   = color_name(np.array([110, 25, 25]))
+        assert burgundy == "burgundy"
+        assert maroon == "maroon"
+
+    def test_charcoal_distinct_from_black_and_gray(self):
+        result = color_name(np.array([70, 75, 80]))
+        assert result == "charcoal"
+
+    def test_mustard_distinct_from_yellow(self):
+        assert color_name(np.array([190, 155, 45])) == "mustard"
+        assert color_name(np.array([225, 210, 35])) == "yellow"
+
+    def test_rust(self):
+        assert color_name(np.array([185, 75, 35])) == "rust"
+
+    def test_sage(self):
+        assert color_name(np.array([140, 165, 120])) == "sage"
+
+    def test_camel(self):
+        assert color_name(np.array([190, 145, 80])) == "camel"
+
+    def test_indigo_distinct_from_navy(self):
+        # Indigo is lighter and more purple than navy
+        assert color_name(np.array([60, 50, 170])) == "indigo"
+
+    # LAB distance sanity: similar perceptual colors should map correctly
+    def test_dark_blue_is_navy_not_black(self):
+        # RGB-distance would confuse very dark blue with black;
+        # LAB correctly identifies it as navy
+        assert color_name(np.array([15, 25, 80])) == "navy"
 
     def test_always_returns_a_string(self):
         result = color_name(np.array([123, 45, 67]))
